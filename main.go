@@ -228,6 +228,8 @@ func DeleteProducts(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusOK)
 }
 
+// TODO: add some resource
+
 func AddBrands(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	var newBrand Brands
