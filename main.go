@@ -229,6 +229,7 @@ func DeleteProducts(w http.ResponseWriter, r *http.Request) {
 }
 
 // TODO: add some resource
+// TODO: Documentation
 
 func AddBrands(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
@@ -292,6 +293,7 @@ func AddProducts(w http.ResponseWriter, r *http.Request) {
 func UpdateProducts(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	productid := chi.URLParam(r, "productsid")
+
 	id, _ := strconv.Atoi(productid)
 	if _, ok := productlist[id]; !ok {
 		w.WriteHeader(404)
@@ -353,6 +355,14 @@ func Login(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusOK)
 }
 
+func Logout(w http.ResponseWriter, r *http.Request) {
+	http.SetCookie(w, &http.Cookie{
+		Name:    "jwt",
+		Expires: time.Now(),
+	})
+	w.WriteHeader(http.StatusOK)
+}
+
 func main() {
 
 	GenData()
@@ -383,6 +393,7 @@ func main() {
 			r.Post("/add", AddBrands)
 			r.Post("/delete/{brandsid}", DeleteBrands)
 		})
+		r.Post("/logout", Logout)
 
 	})
 	http.ListenAndServe(":8081", r)
