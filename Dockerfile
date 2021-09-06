@@ -1,4 +1,4 @@
-FROM golang:1.17.0-alpine3.14 AS builder
+FROM golang:latest AS builder
 
 RUN mkdir /app
 WORKDIR /app
