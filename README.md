@@ -1,4 +1,4 @@
-<h1> Simple API SERVER using go-chi </h1>
+<h1> Simple API SERVER using Go-Chi </h1>
 <h2>Installations</h2>
 
  - [Docker](https://sysdevbd.com/containers/docker/)
